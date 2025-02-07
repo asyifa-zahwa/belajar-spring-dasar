@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class AnnotationConfigTest {
+public class CyclicTest {
     @Test
-    void testApplicationContext() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(HelloWordConfiguration.class);
-        Assertions.assertNotNull(context); 
+    void cyclicTest(){
+        Assertions.assertThrows(Throwable.class, ()->{
+
+            ApplicationContext context = new AnnotationConfigApplicationContext(CyclicConfiguration.class);
+        });
     }
 }
